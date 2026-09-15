@@ -11,3 +11,6 @@ wheels/
 
 # Logging
 game_state.jsonl
+
+# Key
+.githubkey
