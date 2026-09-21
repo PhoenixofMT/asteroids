@@ -11,22 +11,6 @@ from player import Player
 from shot import Shot
 
 
-def wrap_position(position: pygame.Vector2) -> pygame.Vector2:
-    x, y = position
-
-    if x < 0:
-        x += SCREEN_WIDTH
-    elif x > SCREEN_WIDTH:
-        x -= SCREEN_WIDTH
-
-    if y < 0:
-        y += SCREEN_HEIGHT
-    elif y > SCREEN_HEIGHT:
-        y -= SCREEN_HEIGHT
-
-    return pygame.Vector2(x, y)
-
-
 def main():
     print(f"Starting Asteroids with pygame version {pygame.version.ver}")
     print(f"Screen width: {SCREEN_WIDTH}")
@@ -82,7 +66,7 @@ def main():
 
         for sprite in drawable:
             if sprite.off_screen:
-                sprite.position = wrap_position(sprite.position)
+                sprite.wrap_screen()
             sprite.draw(screen)
 
         pygame.display.flip()
