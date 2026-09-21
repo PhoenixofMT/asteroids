@@ -64,6 +64,19 @@ def main():
                     shot.kill()
 
         for sprite in drawable:
+            x, y = sprite.position
+
+            if x < 0:
+                x += SCREEN_WIDTH
+            elif x > SCREEN_WIDTH:
+                x -= SCREEN_WIDTH
+
+            if y < 0:
+                y += SCREEN_HEIGHT
+            elif y > SCREEN_HEIGHT:
+                y -= SCREEN_HEIGHT
+
+            sprite.position = pygame.Vector2(x, y)
             sprite.draw(screen)
 
         pygame.display.flip()
