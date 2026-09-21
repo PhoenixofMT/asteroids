@@ -56,7 +56,7 @@ def main():
         for asteroid in asteroids:
             if player.collides_with(asteroid):
                 log_event("player_hit")
-                print("Game over!")
+                print(f"Game over! You made it to level {level}.")
                 sys.exit()
 
             for shot in shots:
@@ -72,8 +72,10 @@ def main():
 
         if asteroidfield.limit_reached and len(asteroids) == 0:
             log_event("field_cleared")
-            print("You WIN!")
-            sys.exit()
+            # print("You WIN!")
+            # sys.exit()
+            level += 1
+            asteroidfield = AsteroidField(level)
 
         pygame.display.flip()
         dt = clock.tick(60) / 1000
