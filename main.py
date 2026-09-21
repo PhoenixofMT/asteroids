@@ -74,6 +74,8 @@ def main():
             log_event("field_cleared")
             # print("You WIN!")
             # sys.exit()
+            for shot in shots:
+                shot.kill()
             level += 1
             asteroidfield = AsteroidField(level)
 
