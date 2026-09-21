@@ -34,10 +34,10 @@ class AsteroidField(pygame.sprite.Sprite):
         ),
     ]
 
-    def __init__(self) -> None:
+    def __init__(self, level: int) -> None:
         pygame.sprite.Sprite.__init__(self, self.containers)
         self.spawn_timer = 0.0
-        self.limit = ASTEROID_FIELD_LIMIT
+        self.limit = level * ASTEROID_FIELD_LIMIT
 
     @property
     def limit_reached(self) -> bool:
