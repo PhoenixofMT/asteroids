@@ -23,6 +23,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0.0
+    level = 1
 
     asteroids: pygame.sprite.Group = pygame.sprite.Group()
     drawable: pygame.sprite.Group = pygame.sprite.Group()
@@ -32,7 +33,7 @@ def main():
     Asteroid.containers = (asteroids, drawable, updatable)
 
     AsteroidField.containers = updatable
-    asteroidfield: AsteroidField = AsteroidField(3)
+    asteroidfield: AsteroidField = AsteroidField(level)
 
     Player.containers = (drawable, updatable)
     player: Player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
