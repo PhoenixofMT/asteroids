@@ -27,7 +27,7 @@ class Asteroid(CircleShape):
 
         deflection = random.uniform(20, 50)
         a1_velocity = self.velocity.rotate(deflection) * 1.2
-        a2_velocity = self.velocity.rogate(-deflection) * 1.2
+        a2_velocity = self.velocity.rotate(-deflection) * 1.2
 
         new_radius = self.radius - ASTEROID_MIN_RADIUS
 
