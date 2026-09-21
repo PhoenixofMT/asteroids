@@ -69,6 +69,11 @@ def main():
                 sprite.wrap_screen()
             sprite.draw(screen)
 
+        if asteroidfield.limit_reached and len(asteroids) == 0:
+            log_event("field_cleared")
+            print("You WIN!")
+            sys.exit()
+
         pygame.display.flip()
         dt = clock.tick(60) / 1000
 
