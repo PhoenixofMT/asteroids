@@ -39,6 +39,10 @@ class AsteroidField(pygame.sprite.Sprite):
         self.spawn_timer = 0.0
         self.limit = ASTEROID_FIELD_LIMIT
 
+    @property
+    def limit_reached(self) -> bool:
+        return self.limit <= 0
+
     def spawn(
         self, radius: float, position: pygame.Vector2, velocity: pygame.Vector2
     ) -> None:
