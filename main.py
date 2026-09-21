@@ -1,4 +1,5 @@
 import sys
+from textwrap import wrap
 
 import pygame
 
@@ -8,6 +9,22 @@ from constants import *
 from logger import log_event, log_state
 from player import Player
 from shot import Shot
+
+
+def wrap_position(position: pygame.Vector2) -> pygame.Vector2:
+    x, y = position
+
+    if x < 0:
+        x += SCREEN_WIDTH
+    elif x > SCREEN_WIDTH:
+        x -= SCREEN_WIDTH
+
+    if y < 0:
+        y += SCREEN_HEIGHT
+    elif y > SCREEN_HEIGHT:
+        y -= SCREEN_HEIGHT
+
+    return pygame.Vector2(x, y)
 
 
 def main():
@@ -64,19 +81,8 @@ def main():
                     shot.kill()
 
         for sprite in drawable:
-            x, y = sprite.position
-
-            if x < 0:
-                x += SCREEN_WIDTH
-            elif x > SCREEN_WIDTH:
-                x -= SCREEN_WIDTH
-
-            if y < 0:
-                y += SCREEN_HEIGHT
-            elif y > SCREEN_HEIGHT:
-                y -= SCREEN_HEIGHT
-
-            sprite.position = pygame.Vector2(x, y)
+            if sprite.off_screen:
+                sprite.position = wrap_position(sprite.position)
             sprite.draw(screen)
 
         pygame.display.flip()
